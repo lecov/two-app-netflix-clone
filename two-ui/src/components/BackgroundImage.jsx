@@ -1,5 +1,5 @@
 import React from 'react'
-import background from "../assets/backgroundlogin.jpg";
+import background from "../assets/logo/backgroundlogintwo.jpg";
 import styled from 'styled-components';
 
 export default function BackgroundImage() {
@@ -10,4 +10,11 @@ export default function BackgroundImage() {
   )
 }
 
-const Container = styled.div``;
+const Container = styled.div`
+    height: 100vh;
+    width: 100vw;
+    img {
+        height: 100vh;
+        width: 100vw;
+    }
+`;
