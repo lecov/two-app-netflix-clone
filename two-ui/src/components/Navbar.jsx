@@ -4,7 +4,7 @@ import styled from 'styled-components'
 import logo from "../assets/logo/logo-two-final.png"
 import {FaPowerOff, FaSearch} from "react-icons/fa"
 import { firebaseAuth } from '../utils/firebase-config';
-import { onAuthStateChanged } from 'firebase/auth'
+import { onAuthStateChanged, signOut } from 'firebase/auth'
 
 export default function Navbar({isScrolled}) {
 
