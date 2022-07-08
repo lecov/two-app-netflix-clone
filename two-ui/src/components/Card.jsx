@@ -8,14 +8,14 @@ import { BsCheck } from 'react-icons/bs';
 import { AiOutlinePlus } from 'react-icons/ai';
 import { BiChevronDown } from 'react-icons/bi';
 import axios from 'axios';
-import { firebaseAuth } from ".../utils/firebase-config";
+import { firebaseAuth } from "../utils/firebase-config";
 import { onAuthStateChanged } from 'firebase/auth';
 
 export default React.memo(function Card({movieData,isLiked = false}) {
     const [isHovered, setIsHovered] = useState(false);
-    const [email, setEmail] = useState(undefined);
     const navigate = useNavigate();
-
+    
+    const [email, setEmail] = useState(undefined);
     onAuthStateChanged(firebaseAuth,(currentUser) => {
         if(currentUser) setEmail(currentUser.email);
         else navigate("/login");
