@@ -58,7 +58,19 @@ export const fetchMovies = createAsyncThunk(
     }
 );
 
-// return getRawData(`${TMDB_BASE_URL}/discorver/${type}?api_key=${API_KEY}&with_genres=${genre}`)
+export const fetchDataByGenre = createAsyncThunk(
+    "two/moviesByGenre", 
+    async ({ genre, type }, thunkApi) => {
+        const {
+            two:  { genres },
+        } = thunkApi.getState();
+        return getRawData(
+            `${TMDB_BASE_URL}/discover/${type}?api_key=${API_KEY}&with_genres=${genre}`,
+            genres
+        );
+    }
+);
+
 
 const TwoSlice = createSlice ({
     name: "Two",
@@ -69,6 +81,9 @@ const TwoSlice = createSlice ({
             state.genresLoaded = true;
         });
         builder.addCase(fetchMovies.fulfilled,(state,action)=> {
+            state.movies = action.payload;
+        });
+        builder.addCase(fetchDataByGenre.fulfilled,(state,action)=> {
             state.movies = action.payload;
         });
     }, 

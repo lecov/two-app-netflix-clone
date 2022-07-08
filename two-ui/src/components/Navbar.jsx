@@ -10,7 +10,7 @@ export default function Navbar({isScrolled}) {
 
     const links = [
         { name: "Home", link: "/"},
-        { name: "Tv shows", link: "/tv"},
+        { name: "Tv shows", link: "/series"},
         { name: "Movies", link: "/movies"},
         { name: "Home", link: "/mylist"},
     ];
@@ -35,7 +35,7 @@ export default function Navbar({isScrolled}) {
             {
               links.map(({name,link})=> {
                 return (
-                  <li key={name}><Link to={links}>{name}</Link></li>
+                  <li key={name}><Link to={link}>{name}</Link></li>
                 )
               })
             }

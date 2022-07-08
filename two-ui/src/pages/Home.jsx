@@ -19,11 +19,11 @@ export default function Home() {
 
     useEffect(()=> {
       dispatch(getGenres())
-    }, []);
+    }, [dispatch]);
 
     useEffect(()=> {
-      if(genresLoaded) dispatch(fetchMovies({ type: "all"}))
-    })
+      if(genresLoaded) dispatch(fetchMovies({ type: "all"}));
+    }, [dispatch, genresLoaded])
 
     window.onscroll = () => {
         setIsScrolled(window.pageYOffset===0 ? false : true);
