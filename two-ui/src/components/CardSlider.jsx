@@ -2,7 +2,7 @@ import React, { useRef, useState } from 'react'
 import { AiOutlineLeft, AiOutlineRight } from 'react-icons/ai';
 import styled from 'styled-components'
 import Card from './Card'
-export default function CardSlider({data,title}) {
+export default React.memo(function CardSlider({data,title}) {
     const [showControls, setShowControls] = useState(false);
     const [sliderPosition, setSliderPosition] = useState(0);
     const listRef = useRef();
@@ -39,7 +39,7 @@ export default function CardSlider({data,title}) {
         </div>
     </Container>
   )
-}
+});
 
 const Container = styled.div`
     gap: 1rem;
