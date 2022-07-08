@@ -4,11 +4,9 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 import Navbar from '../components/Navbar';
-import NotAvailable from '../components/NotAvailable';
-import SelectGenre from '../components/SelectGenre';
-import Slider from '../components/Slider';
-import { fetchMovies, getGenres, getUserLikedMovies } from '../store';
+import { getUserLikedMovies } from '../store';
 import { firebaseAuth } from '../utils/firebase-config';
+import Card from "../components/Card"
 
 export default function UserLiked() {
     const [isScrolled, setIsScrolled] = useState(false);
@@ -43,7 +41,7 @@ export default function UserLiked() {
         <div className="content flex column">
             <h1>My list</h1>
             <div className="grid flex">
-                {movies.map((movie,flex)=> {
+                {movies.map((movie,index)=> {
                     return <Card movieData={movie} index={index} key={movie.id} isLiked={true}/>
                 })}
             </div> 

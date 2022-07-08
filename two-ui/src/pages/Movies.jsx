@@ -33,7 +33,7 @@ export default function Movies() {
     };
 
     onAuthStateChanged(firebaseAuth,(currentUser) => {
-        // if(currentUser) navigate("/");
+        if(!currentUser) navigate("/");
     })
 
   return (
