@@ -76,6 +76,11 @@ export const getUserLikedMovies = createAsyncThunk("two/getLiked",async (email)=
     return movies;
 })
 
+export const removeFromLikedMovies = createAsyncThunk("two/deleteLiked",async (email,movieId)=> {
+    const {data:{movies}} = await axios.put(`https://localhost:5000/api/user/delete`, { email, movieId});
+    return movies;
+})
+
 const TwoSlice = createSlice ({
     name: "Two",
     initialState,
@@ -88,6 +93,9 @@ const TwoSlice = createSlice ({
             state.movies = action.payload;
         });
         builder.addCase(getUserLikedMovies.fulfilled,(state,action)=> {
+            state.movies = action.payload;
+        });
+        builder.addCase(removeFromLikedMovies.fulfilled,(state,action)=> {
             state.movies = action.payload;
         });
     }, 
